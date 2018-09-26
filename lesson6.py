@@ -254,16 +254,22 @@ class Graph(object):
         RETURN: a list of the node values (integers)."""
         #self._clear_visited() Not sure if we should clear it...?
         currentNode = self.find_node(start_node_num)
-        if currentNode
-        if (currentNode.visited == False):
-            currentNode.visited = True
-            print self.node_names[start_node_num]
+        if (currentNode.visited == True):
+            return
+
+        children = self.get_adjacency_list()[start_node_num]
+        output = []
+
+        currentNode.visited = True
+        output.append(start_node_num)
+
+        if(children != None):
+            print children
+            childValue = children[0][0]
+
         else:
             return
-        if (self.get_adjacency_list[start_node_num] == []):
-            print 'here'
-
-        return
+        return output
 
     def dfs_names(self, start_node_num):
         """Return the results of dfs with numbers converted to names."""
@@ -324,17 +330,17 @@ import pprint
 
 pp = pprint.PrettyPrinter(indent=2)
 
-print "Edge List"
-pp.pprint(graph.get_edge_list_names())
+#print "Edge List"
+#pp.pprint(graph.get_edge_list_names())
 
 print "\nAdjacency List"
 pp.pprint(graph.get_adjacency_list_names())
 
-print "\nAdjacency Matrix"
-pp.pprint(graph.get_adjacency_matrix())
+#print "\nAdjacency Matrix"
+#pp.pprint(graph.get_adjacency_matrix())
 
 print "\nDepth First Search"
-pp.pprint(graph.dfs_names(6))
+pp.pprint(graph.dfs_names(2))
 
 # Should print:
 # Depth First Search
