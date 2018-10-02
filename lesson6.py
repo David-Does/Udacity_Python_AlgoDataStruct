@@ -254,22 +254,25 @@ class Graph(object):
         RETURN: a list of the node values (integers)."""
         #self._clear_visited() Not sure if we should clear it...?
         currentNode = self.find_node(start_node_num)
-        if (currentNode.visited == True):
-            return
-
-        children = self.get_adjacency_list()[start_node_num]
         output = []
+        if (currentNode.visited == True):
+            return output
 
         currentNode.visited = True
-        output.append(start_node_num)
+        output = output + [start_node_num]
+
+        children = self.get_adjacency_list()[start_node_num]
 
         if(children != None):
-            print children
-            childValue = children[0][0]
-
+            for childValue in children:
+                childNode = self.find_node(childValue[0])
+                if (childNode.visited == False):
+                    output = output + self.dfs(childValue[0])
+            #childValue = children[0][0]
+            #output = output + self.dfs(childValue)
+            return output
         else:
-            return
-        return output
+            return output
 
     def dfs_names(self, start_node_num):
         """Return the results of dfs with numbers converted to names."""
