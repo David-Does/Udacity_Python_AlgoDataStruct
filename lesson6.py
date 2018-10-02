@@ -285,14 +285,20 @@ class Graph(object):
         self._clear_visited()
         children = self.get_adjacency_list()[start_node_num]
         todoStack = []
-        while (output != self.find_max_index()-1):
 
-            output.append(node.value)
+        todoStack.append(node.value)
+        node.visited = True
+
+        while (True):
             for child in children:
-                output.append(child[0])
+                todoStack.append(child[0])
+                currentNode = self.find_node(child[0])
+                currentNode.visited = True
+            children =
 
 
-        return output
+
+        return todoStack.reverse()
 
     def bfs_names(self, start_node_num):
         """Return the results of bfs with numbers converted to names."""
