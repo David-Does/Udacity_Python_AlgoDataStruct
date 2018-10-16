@@ -6,21 +6,23 @@ def numOfIslands(arr):
     if(not arr or len(arr[0]) is 0):
         return 0
     temp = copy.deepcopy(arr)
+    count = 0
     for x in xrange(len(temp)):
         for y in xrange(x):
             if (temp[x][y] is not 0):
                 count = count + 1
-                bfs(temp,x,y
+                print temp
+                bfs(temp,x,y)
+                print 'end of bfs'
     return count
 
 def bfs(tempArr,x,y):
     """Performs a breadth first search and marks 1's as seen by changing their value to 0"""
     stack = [[x,y]]
-    while (not stack):
-        i, j = stack.pop(0)
-        tempArr[i,j] = 0
+    while (stack):
+        i,j = stack.pop(0)
+        tempArr[i][j] = 0
         stack = stack + findOneAround(tempArr,i,j)
-
 def findOneAround(tempArr,x,y):
     """Returns a list of lists that each contain x,y coordinates of where the value is 1"""
     xLimit = len(tempArr)
@@ -34,3 +36,5 @@ def findOneAround(tempArr,x,y):
                     result.append([i,j])
     return result
 
+testArray = [[1,0,1],[0,0,0],[1,0,1],[1,1,0]]
+print (numOfIslands(testArray))
