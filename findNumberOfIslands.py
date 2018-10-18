@@ -25,7 +25,6 @@ def findOneAround(tempArr,x,y):
     """Returns a list of lists that contain x,y coordinates of where the value is 1"""
     xLimit = len(tempArr)
     yLimit = len(tempArr[0])
-    tempArr[x][y] = 0
     for i in xrange(x-1,x+2):
         for j in xrange(y-1,y+2):
             if ((i >= 0 and i < xLimit) and (j>= 0 and j < yLimit)):
