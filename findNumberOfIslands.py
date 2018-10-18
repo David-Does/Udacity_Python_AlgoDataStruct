@@ -2,7 +2,6 @@ import copy
 
 def numOfIslands(arr):
     """Returns the number of islands in a given 2d Array"""
-    #remember to guard against nulls
     if (not arr[0] or len(arr[0]) == 0):
         return 0
     temp = copy.deepcopy(arr)
@@ -19,9 +18,11 @@ def bfs(tempArr,x,y):
     stack = [[x,y]]
     while (stack):
         r,c = stack.pop()
+        tempArr[r][c] = 0
         stack = stack + findOneAround(tempArr,r,c)
+
 def findOneAround(tempArr,x,y):
-    """Returns a list of lists that each contain x,y coordinates of where the value is 1"""
+    """Returns a list of lists that contain x,y coordinates of where the value is 1"""
     xLimit = len(tempArr)
     yLimit = len(tempArr[0])
     tempArr[x][y] = 0
@@ -31,7 +32,6 @@ def findOneAround(tempArr,x,y):
                 if(tempArr[i][j] is 1):
                     return [[i,j]]
     return []
-    #return result
 
 testArray1 = [[1,0,1],[0,0,0],[1,0,1],[1,1,0]]
 testArray2 = [None]
