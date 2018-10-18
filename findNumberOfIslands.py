@@ -3,7 +3,7 @@ import copy
 def numOfIslands(arr):
     """Returns the number of islands in a given 2d Array"""
     #remember to guard against nulls
-    if(not arr or len(arr[0]) is 0):
+    if (not arr[0] or len(arr[0]) == 0):
         return 0
     temp = copy.deepcopy(arr)
     count = 0
@@ -34,4 +34,8 @@ def findOneAround(tempArr,x,y):
     #return result
 
 testArray1 = [[1,0,1],[0,0,0],[1,0,1],[1,1,0]]
-print (numOfIslands(testArray))
+testArray2 = [None]
+testArray3 = [[]]
+print (numOfIslands(testArray1))
+print (numOfIslands(testArray2))
+print (numOfIslands(testArray3))
