@@ -25,16 +25,19 @@ def findOneAround(tempArr,x,y):
     """Returns a list of lists that contain x,y coordinates of where the value is 1"""
     xLimit = len(tempArr)
     yLimit = len(tempArr[0])
+    result = []
     for i in xrange(x-1,x+2):
         for j in xrange(y-1,y+2):
             if ((i >= 0 and i < xLimit) and (j>= 0 and j < yLimit)):
                 if(tempArr[i][j] is 1):
-                    return [[i,j]]
-    return []
+                    result.append([i,j])
+    return result
 
 testArray1 = [[1,0,1],[0,0,0],[1,0,1],[1,1,0]]
 testArray2 = [None]
 testArray3 = [[]]
+testArray4 = [[0,1,0],[1,0,1]]
 print (numOfIslands(testArray1))
 print (numOfIslands(testArray2))
 print (numOfIslands(testArray3))
+print (numOfIslands(testArray4))
